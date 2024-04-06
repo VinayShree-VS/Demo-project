@@ -1,0 +1,119 @@
+.tableContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+    box-shadow: 0px 15px 50px 0px rgba(167, 177, 209, 0.6117647059) !important;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+.tableContainer .topPart{
+    width: 100%;
+    height: 60px;
+}
+.topPart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row;
+    height: 50px;
+}
+.topPart button{
+    background-color: #114fc1;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    height: 37px;
+    padding: 0 15px;
+}
+
+.topPart span{
+    font-size: 18px;
+    font-weight: 500;
+    color: #114fc1;
+}
+.tableContainer .bottomPart{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+.tabel_title{
+    height: 30px;
+    background: #114fc1;
+    color: white;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.tabel_title button{
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #114fc1;
+    height: 23px;
+    padding: 2px 21px;
+}
+
+.tabel_title span{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.table_header {
+    width: 100%;
+    /* table-layout: fixed; */
+    border-collapse: collapse;
+}
+
+.table_header tbody{
+  width: 100%;
+  overflow: auto;
+  max-height: calc(100vh - 65px);
+}
+
+
+.table_header thead {
+  background: black !important;
+  color:#fff;
+}
+
+.table_header th, .table_header td {
+  padding: 2px 5px;
+  text-align: left;
+  width: 200px;
+}
+.table_header thead input {
+   width:calc(100% - 2px);
+    color:#848484;
+    height: 20px;
+    outline: none;
+}
+.table_header thead tr th input::placeholder {
+    color:#848484 !important;
+}
+
+.dataNotFound{
+    text-align: center;
+    font-size: 17px;
+    color: #888;
+    padding: 136px 0px;
+}
+
+mat-icon:hover{
+    cursor: pointer;
+}

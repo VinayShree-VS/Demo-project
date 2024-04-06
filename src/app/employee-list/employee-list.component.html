@@ -1,0 +1,55 @@
+<div class="tableContainer">
+  <div class="topPart">
+    <span>Employee List</span>
+    <button (click)="addEmpoyee()">+Add Employee</button>
+  </div>
+  <div class="bottomPart">
+        <!-- <div class="tabel_title"><span>Employee List</span> <button (click)="showFilter()">{{togleFilter?'Clear FIlter':'Filter'}}</button></div> -->
+          <table class="table_header">
+            <thead>
+              <tr>
+                <th>S.N.</th>
+                <th>Employee Code</th>
+                <th>Employee Name</th>
+                <th>Address 1</th>
+                <th>Mobile Number</th>
+                <th>Date Of Birth</th>
+                <th>Date Of Joining</th>
+                <th>Salary</th>
+                <th>Remarks</th>
+                <th>Action</th>
+              </tr>
+              <tr>
+                <th><input type='text' placeholder='Search' style="display: none;" /></th>
+                <th><input type='text' placeholder='Search' #employeeCode/></th>
+                <th><input type='text' placeholder='Search' #employeeName/></th>
+                <th><input type='text' placeholder='Search' #address1 /></th>
+                <th><input type='text' placeholder='Search' #mobileNo/></th>
+                <th><input type='text' placeholder='Search' #DOB/></th>
+                <th><input type='text' placeholder='Search' #DOJ/></th>
+                <th><input type='text' placeholder='Search' #salary/></th>
+                <th><input type='text' placeholder='Search' #remarks/></th>
+                <th><input type='text' placeholder='Search' style="display: none;"/></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of employeeList; index as i">
+                <td>{{i+1}}</td>
+                <td>{{emp.employee_code}}</td>
+                <td>{{emp.employee_name}}</td>
+                <td>{{emp.address_1}}</td>
+                <td>{{emp.mobile_no}}</td>
+                <td>{{emp.date_of_birth}}</td>
+                <td>{{emp.date_of_joining}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.remarks}}</td>
+                <td>
+                    <mat-icon matTooltip="Edit" (click)="edit(emp.id)">edit</mat-icon>
+                    <mat-icon matTooltip="Delete" (click)="delete(i, emp.id)">delete</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="dataNotFound" *ngIf="employeeList?.length == 0">Data Not Found</p>
+  </div>
+</div>

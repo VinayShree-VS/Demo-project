@@ -1,0 +1,128 @@
+<div fxLayout="row" mat-dialog-title class="top_header">
+    <div fxFlex="80%" fxLayoutAlign="start">
+        <div fxLayout="column" fxLayoutAlign="center">
+          <h2 style="color: #fff; margin-bottom: 0;">Add Employee</h2>
+        </div>
+      </div>
+    <div fxFlex="20%" fxLayoutAlign="end">
+      <div fxLayout="column" fxLayoutAlign="center">
+        <mat-icon (click)="cancel()" class="cross-mat-icon">close</mat-icon>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="formContainer">
+        <div style="padding-top: 15px; text-align: center;" class="FormContainer">
+            <form [formGroup]="employeeForm">
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Employee Code</div>
+                <mat-form-field appearance="outline" fxFlex="100%">
+                    <input placeholder="ENTER EMPLOYEE CODE" matInput type="text" formControlName="employee_code" />
+                    <mat-error
+                      *ngIf="EF['employee_code'].invalid || (EF['employee_code'].dirty || EF['employee_code'].touched)">
+                      <span *ngIf="EF['employee_code'].hasError('required')">Employee code is required.</span>
+                      <span *ngIf="EF['employee_code'].hasError('isExist')">{{EF['employee_code']?.['errors']?.['isExist']}}</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Employee Name</div>
+                <mat-form-field appearance="outline" fxFlex="100%">
+                    <input placeholder="ENTER EMPLOYEE NAME" matInput type="text" formControlName="employee_name" />
+                    <mat-error
+                      *ngIf="EF['employee_name'].invalid || (EF['employee_name'].dirty || EF['employee_name'].touched)">
+                      <span *ngIf="EF['employee_name'].hasError('required')">Employee name is required.</span>
+                      <!-- <span *ngIf="EF['employee_name'].hasError('serverError')">
+                        {{EF['employee_name']?.['errors']?.['serverError']}}</span> -->
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Address 1</div>
+                <mat-form-field appearance="outline" fxFlex="100%">
+                    <input placeholder="ENTER ADDRESS 1" matInput type="text" formControlName="address_1" />
+                    <mat-error
+                      *ngIf="EF['address_1'].invalid || (EF['address_1'].dirty || EF['address_1'].touched)">
+                      <span *ngIf="EF['address_1'].hasError('required')">Address 1 is required.</span>
+                      <!-- <span *ngIf="EF['address_1'].hasError('serverError')">
+                        {{EF['address_1']?.['errors']?.['serverError']}}</span> -->
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Mobile Number</div>
+                <mat-form-field appearance="outline" fxFlex="100%">
+                    <input placeholder="ENTER MOBILE NO." matInput type="text" formControlName="mobile_no" />
+                    <mat-error
+                      *ngIf="EF['mobile_no'].invalid || (EF['mobile_no'].dirty || EF['mobile_no'].touched)">
+                      <span *ngIf="EF['mobile_no'].hasError('required')">Mobile number is required.</span>
+                      <!-- <span *ngIf="EF['mobile_no'].hasError('serverError')">
+                        {{EF['mobile_no']?.['errors']?.['serverError']}}</span> -->
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Date Of Birth</div>
+                        <mat-form-field appearance="outline" fxFlex="100%">
+                          <input matInput readonly placeholder="ENTER DATE OF BIRTH" [max]="toDate" [matDatepicker]="startDateCal" formControlName="date_of_birth"
+                          (dateChange)="onchange_date($event)"
+                          required />
+                          <mat-datepicker-toggle matSuffix [for]="startDateCal">
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #startDateCal></mat-datepicker>
+                          <mat-error
+                          *ngIf="EF['date_of_birth'].invalid || (EF['date_of_birth'].dirty || EF['date_of_birth'].touched)">
+                          <span *ngIf="EF['date_of_birth'].hasError('required')">Date of birth is required.</span>
+                        </mat-error>
+                        </mat-form-field>
+                      </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Date Of Joining</div>
+                        <mat-form-field appearance="outline" fxFlex="100%">
+                          <input matInput readonly placeholder="ENTER DATE OF JOINING"  [matDatepicker]="startDateCal1" formControlName="date_of_joining"
+                          (dateChange)="onchange_date($event)"
+                          required />
+                          <mat-datepicker-toggle matSuffix [for]="startDateCal1">
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #startDateCal1></mat-datepicker>
+                          <mat-error
+                          *ngIf="EF['date_of_joining'].invalid || (EF['date_of_joining'].dirty || EF['date_of_joining'].touched)">
+                          <span *ngIf="EF['date_of_joining'].hasError('required')">Date of joining is required.</span>
+                        </mat-error>
+                        </mat-form-field>
+                      </div>
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Salary</div>
+              <mat-form-field appearance="outline" fxFlex="100%">
+              <input placeholder="ENTER SALARY." matInput type="text" formControlName="salary" />
+              <mat-error
+                *ngIf="EF['salary'].invalid || (EF['salary'].dirty || EF['salary'].touched)">
+                <span *ngIf="EF['salary'].hasError('required')">Salary is required.</span>
+                <!-- <span *ngIf="EF['salary'].hasError('serverError')">
+                  {{EF['salary']?.['errors']?.['serverError']}}</span> -->
+              </mat-error>
+            </mat-form-field>
+                      </div>
+
+            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+              <div class="label">Remarks</div>
+                <mat-form-field appearance="outline" fxFlex="100%">
+                    <input placeholder="ENTER REMARKS" matInput type="text" formControlName="remarks" />
+                    <mat-error
+                      *ngIf="EF['remarks'].invalid || (EF['remarks'].dirty || EF['remarks'].touched)">
+                      <span *ngIf="EF['remarks'].hasError('required')">Remarks is required.</span>
+                      <!-- <span *ngIf="EF['remarks'].hasError('serverError')">
+                        {{EF['remarks']?.['errors']?.['serverError']}}</span> -->
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+            </form>
+        </div>
+          <div fxLayout="row" fxLayoutAlign="end" style="margin-top: 23px;">
+            <div fxLayoutGap="10px" fxLayoutAlign="center">
+                <button class="yellow-button" style="padding: 5px 18px;" (click)="cancel()">Cancel</button>
+                <button class="yellow-button" style="padding: 5px 18px;" (click)="save()">{{dialogData.empId ?"Update":'Save'}}</button>
+            </div>
+          </div>
+    </div>
+  </mat-dialog-content>
