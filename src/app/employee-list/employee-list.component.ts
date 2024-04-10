@@ -44,7 +44,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
 
   addEmpoyee(){
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
-      height:'auto',width:'500px',
+      height:'auto',width:'800px',
       disableClose: true,
       data:{empId: null},
       autoFocus:false
@@ -60,7 +60,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
 
   edit(empId:any){
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
-      height:'auto',width:'500px',
+      height:'auto',width:'800px',
       disableClose: true,
       data:{empId: empId},
       autoFocus:false

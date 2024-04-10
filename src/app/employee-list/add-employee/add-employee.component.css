@@ -56,3 +56,14 @@
     font-size: 12px;
     color: #f6821f;
   }
+
+  .ct_cl{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .ct_cl .formControls{
+    flex: 1;
+  }

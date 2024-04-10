@@ -14,83 +14,89 @@
     <div class="formContainer">
         <div style="padding-top: 15px; text-align: center;" class="FormContainer">
             <form [formGroup]="employeeForm">
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Employee Code</div>
-                <mat-form-field appearance="outline" fxFlex="100%">
-                    <input placeholder="ENTER EMPLOYEE CODE" matInput type="text" formControlName="employee_code" />
-                    <mat-error
-                      *ngIf="EF['employee_code'].invalid || (EF['employee_code'].dirty || EF['employee_code'].touched)">
-                      <span *ngIf="EF['employee_code'].hasError('required')">Employee code is required.</span>
-                      <span *ngIf="EF['employee_code'].hasError('isExist')">{{EF['employee_code']?.['errors']?.['isExist']}}</span>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Employee Name</div>
-                <mat-form-field appearance="outline" fxFlex="100%">
-                    <input placeholder="ENTER EMPLOYEE NAME" matInput type="text" formControlName="employee_name" />
-                    <mat-error
-                      *ngIf="EF['employee_name'].invalid || (EF['employee_name'].dirty || EF['employee_name'].touched)">
-                      <span *ngIf="EF['employee_name'].hasError('required')">Employee name is required.</span>
-                      <!-- <span *ngIf="EF['employee_name'].hasError('serverError')">
-                        {{EF['employee_name']?.['errors']?.['serverError']}}</span> -->
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Address 1</div>
-                <mat-form-field appearance="outline" fxFlex="100%">
-                    <input placeholder="ENTER ADDRESS 1" matInput type="text" formControlName="address_1" />
-                    <mat-error
-                      *ngIf="EF['address_1'].invalid || (EF['address_1'].dirty || EF['address_1'].touched)">
-                      <span *ngIf="EF['address_1'].hasError('required')">Address 1 is required.</span>
-                      <!-- <span *ngIf="EF['address_1'].hasError('serverError')">
-                        {{EF['address_1']?.['errors']?.['serverError']}}</span> -->
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Mobile Number</div>
-                <mat-form-field appearance="outline" fxFlex="100%">
-                    <input placeholder="ENTER MOBILE NO." matInput type="text" formControlName="mobile_no" />
-                    <mat-error
-                      *ngIf="EF['mobile_no'].invalid || (EF['mobile_no'].dirty || EF['mobile_no'].touched)">
-                      <span *ngIf="EF['mobile_no'].hasError('required')">Mobile number is required.</span>
-                      <!-- <span *ngIf="EF['mobile_no'].hasError('serverError')">
-                        {{EF['mobile_no']?.['errors']?.['serverError']}}</span> -->
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Date Of Birth</div>
-                        <mat-form-field appearance="outline" fxFlex="100%">
-                          <input matInput readonly placeholder="ENTER DATE OF BIRTH" [max]="toDate" [matDatepicker]="startDateCal" formControlName="date_of_birth"
-                          (dateChange)="onchange_date($event)"
-                          required />
-                          <mat-datepicker-toggle matSuffix [for]="startDateCal">
-                          </mat-datepicker-toggle>
-                          <mat-datepicker #startDateCal></mat-datepicker>
-                          <mat-error
-                          *ngIf="EF['date_of_birth'].invalid || (EF['date_of_birth'].dirty || EF['date_of_birth'].touched)">
-                          <span *ngIf="EF['date_of_birth'].hasError('required')">Date of birth is required.</span>
+              <div class="ct_cl">
+                <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                  <div class="label">Employee Code</div>
+                    <mat-form-field appearance="outline" fxFlex="100%">
+                        <input placeholder="ENTER EMPLOYEE CODE" matInput type="text" formControlName="employee_code" />
+                        <mat-error
+                          *ngIf="EF['employee_code'].invalid || (EF['employee_code'].dirty || EF['employee_code'].touched)">
+                          <span *ngIf="EF['employee_code'].hasError('required')">Employee code is required.</span>
+                          <span *ngIf="EF['employee_code'].hasError('isExist')">{{EF['employee_code']?.['errors']?.['isExist']}}</span>
                         </mat-error>
-                        </mat-form-field>
-                      </div>
-            <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
-              <div class="label">Date Of Joining</div>
-                        <mat-form-field appearance="outline" fxFlex="100%">
-                          <input matInput readonly placeholder="ENTER DATE OF JOINING"  [matDatepicker]="startDateCal1" formControlName="date_of_joining"
-                          (dateChange)="onchange_date($event)"
-                          required />
-                          <mat-datepicker-toggle matSuffix [for]="startDateCal1">
-                          </mat-datepicker-toggle>
-                          <mat-datepicker #startDateCal1></mat-datepicker>
-                          <mat-error
-                          *ngIf="EF['date_of_joining'].invalid || (EF['date_of_joining'].dirty || EF['date_of_joining'].touched)">
-                          <span *ngIf="EF['date_of_joining'].hasError('required')">Date of joining is required.</span>
+                      </mat-form-field>
+                    </div>
+                <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                  <div class="label">Employee Name</div>
+                    <mat-form-field appearance="outline" fxFlex="100%">
+                        <input placeholder="ENTER EMPLOYEE NAME" matInput type="text" formControlName="employee_name" />
+                        <mat-error
+                          *ngIf="EF['employee_name'].invalid || (EF['employee_name'].dirty || EF['employee_name'].touched)">
+                          <span *ngIf="EF['employee_name'].hasError('required')">Employee name is required.</span>
+                          <!-- <span *ngIf="EF['employee_name'].hasError('serverError')">
+                            {{EF['employee_name']?.['errors']?.['serverError']}}</span> -->
                         </mat-error>
-                        </mat-form-field>
-                      </div>
+                      </mat-form-field>
+                    </div>
+                <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                  <div class="label">Address 1</div>
+                    <mat-form-field appearance="outline" fxFlex="100%">
+                        <input placeholder="ENTER ADDRESS 1" matInput type="text" formControlName="address_1" />
+                        <mat-error
+                          *ngIf="EF['address_1'].invalid || (EF['address_1'].dirty || EF['address_1'].touched)">
+                          <span *ngIf="EF['address_1'].hasError('required')">Address 1 is required.</span>
+                          <!-- <span *ngIf="EF['address_1'].hasError('serverError')">
+                            {{EF['address_1']?.['errors']?.['serverError']}}</span> -->
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+              </div>
+            <div class="ct_cl">
+              <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                <div class="label">Mobile Number</div>
+                  <mat-form-field appearance="outline" fxFlex="100%">
+                      <input placeholder="ENTER MOBILE NO." matInput type="text" formControlName="mobile_no" />
+                      <mat-error
+                        *ngIf="EF['mobile_no'].invalid || (EF['mobile_no'].dirty || EF['mobile_no'].touched)">
+                        <span *ngIf="EF['mobile_no'].hasError('required')">Mobile number is required.</span>
+                        <!-- <span *ngIf="EF['mobile_no'].hasError('serverError')">
+                          {{EF['mobile_no']?.['errors']?.['serverError']}}</span> -->
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+              <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                <div class="label">Date Of Birth</div>
+                          <mat-form-field appearance="outline" fxFlex="100%">
+                            <input matInput readonly placeholder="ENTER DATE OF BIRTH" [max]="toDate" [matDatepicker]="startDateCal" formControlName="date_of_birth"
+                            (dateChange)="onchange_date($event)"
+                            required />
+                            <mat-datepicker-toggle matSuffix [for]="startDateCal">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #startDateCal></mat-datepicker>
+                            <mat-error
+                            *ngIf="EF['date_of_birth'].invalid || (EF['date_of_birth'].dirty || EF['date_of_birth'].touched)">
+                            <span *ngIf="EF['date_of_birth'].hasError('required')">Date of birth is required.</span>
+                          </mat-error>
+                          </mat-form-field>
+                        </div>
+              <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
+                <div class="label">Date Of Joining</div>
+                          <mat-form-field appearance="outline" fxFlex="100%">
+                            <input matInput readonly placeholder="ENTER DATE OF JOINING"  [matDatepicker]="startDateCal1" formControlName="date_of_joining"
+                            (dateChange)="onchange_date($event)"
+                            required />
+                            <mat-datepicker-toggle matSuffix [for]="startDateCal1">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #startDateCal1></mat-datepicker>
+                            <mat-error
+                            *ngIf="EF['date_of_joining'].invalid || (EF['date_of_joining'].dirty || EF['date_of_joining'].touched)">
+                            <span *ngIf="EF['date_of_joining'].hasError('required')">Date of joining is required.</span>
+                          </mat-error>
+                          </mat-form-field>
+                        </div>
+            </div>
+
+          <div class="ct_cl">
             <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
               <div class="label">Salary</div>
               <mat-form-field appearance="outline" fxFlex="100%">
@@ -103,7 +109,6 @@
               </mat-error>
             </mat-form-field>
                       </div>
-
             <div class="formControls" style="display: flex;flex-flow: column; gap: 3px;">
               <div class="label">Remarks</div>
                 <mat-form-field appearance="outline" fxFlex="100%">
@@ -116,6 +121,7 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+          </div>
             </form>
         </div>
           <div fxLayout="row" fxLayoutAlign="end" style="margin-top: 23px;">

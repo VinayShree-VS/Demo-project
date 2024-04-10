@@ -13,6 +13,7 @@ export class AddEmployeeComponent {
   employeeForm:FormGroup;
   toDate:any = new Date();
   dialogData: any;
+  isExist:any;
   constructor(
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<AddEmployeeComponent>,
@@ -40,7 +41,7 @@ get EF(){return this.employeeForm.controls}
     let empList = JSON.parse(emp);
 
     if(this.data.empId){
-      let currentEditEmp = empList.find((e:any)=>e.id == this.data.empId );
+      let currentEditEmp = empList.find((e:any)=>e.employee_code == this.data.empId );
       if(currentEditEmp){
         let formVal = {...currentEditEmp, date_of_birth:new Date(currentEditEmp.date_of_birth), date_of_joining:new Date(currentEditEmp.date_of_joining)};
         this.employeeForm.patchValue(formVal);
@@ -63,8 +64,14 @@ get EF(){return this.employeeForm.controls}
     };
     let val = this.employeeForm.getRawValue();
     let formVal = {...val, date_of_birth:moment(val.date_of_birth).format('MM/DD/YYYY'),date_of_joining:moment(val.date_of_joining).format('MM/DD/YYYY')};
+
+    let emp = localStorage.getItem('employeeList');
+    let empList = JSON.parse(emp);
+    let isExist = empList.find((a:any)=> a.employee_code.toLowerCase() == formVal.employee_code.toLowerCase());
+    this.isExist = isExist;
+    console.log(isExist);
     
-    if(this.dialogData.empId){
+    if(this.dialogData.empId || isExist){
       this.update(formVal);
     }else{
       this.newCreate(formVal);
@@ -76,10 +83,12 @@ get EF(){return this.employeeForm.controls}
     if(emp){
       let empList = JSON.parse(emp);
       let isExist = empList.find((a:any)=> a.employee_code.toLowerCase() == data.employee_code.toLowerCase());
-      if(isExist){
-        this.employeeForm.get('employee_code').setErrors({isExist:"Employee code is already exist"});
-        return;
-      }
+      this.isExist = isExist;
+      // if(isExist){
+      //   // this.employeeForm.get('employee_code').setErrors({isExist:"Employee code is already exist"});
+      //   this.update(data)
+      //   // return;
+      // }
       empList.push({id:empList.length+1, ...data})
       let employees = JSON.stringify(empList)
       localStorage.setItem('employeeList',employees);
@@ -95,7 +104,9 @@ get EF(){return this.employeeForm.controls}
   update(data:any){
     let emp = localStorage.getItem('employeeList');
     let empList = JSON.parse(emp);
-    let index = empList.findIndex((a:any)=>a.id == this.dialogData.empId);
+    let index = empList.findIndex((a:any)=>a.employee_code  == this.dialogData.employee_code || this.isExist.employee_code);
+    console.log(index);
+    
     if(index !== -1){
       empList.splice(index,1,{id:this.dialogData.empId, ...data});
       let employees = JSON.stringify(empList)
